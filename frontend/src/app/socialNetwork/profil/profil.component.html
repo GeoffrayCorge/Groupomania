@@ -1,0 +1,23 @@
+<div class="block">
+    <div class='header-profil'>
+        <h1> Ton profil ! </h1>
+        <img class="imgProfil" src="{{user.picture}}" alt="image profil" >
+        <input #inputFile type="file" class="file-upload" (change)="addFile($event)">
+    </div>
+    <form #profilForm="ngForm">
+        <label> Nom</label>
+        <input #inputlastName="ngModel" required type="text" placeholder={{user.lastName}} ngModel name="lastName"
+            class="form-control" id="lastName" minlength="3" [(ngModel)]="inputLastName">
+        <p class="text-danger" *ngIf="inputlastName.invalid && inputlastName.dirty"> Veuillez entrer un nom valide !</p>
+        <label> Prénom</label>
+        <input #inputfirstName="ngModel" required type="text" placeholder={{user.firstName}} ngModel name="firstName"
+            class="form-control" id="firstName" minlength="3" [(ngModel)]="inputFirstName">
+        <p class="text-danger" *ngIf="inputfirstName.invalid && inputfirstName.dirty"> Veuillez entrer un prénom valide
+            !</p>
+        <label> Adresse mail</label>
+        <input #inputMail="ngModel" email required type="text" placeholder={{user.email}} ngModel name="email"
+            class="form-control" id="email" [disabled]="true" >
+
+        <button class="btn signup" (click)="modify(profilForm.value)">Modifier</button>
+    </form>
+</div>

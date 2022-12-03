@@ -1,0 +1,107 @@
+@import '../../styles.scss';
+
+
+.block {
+    margin: 0 auto;
+    width: max-content;
+    border: black 1px solid;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px 0;
+    background-color: $secondColor;
+
+    a {
+        color: #4b48e9;
+        cursor: pointer;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+        display: block;
+        margin: 0 auto;
+        width: 150px;
+        padding: 30px 0 10px 0;
+        font-weight: bold;
+        text-align: center;
+        color: $thirdColor;
+    }
+
+    img {
+        width: 70px;
+        display: block;
+        margin: 0 auto;
+        padding-bottom: 20px;
+
+    }
+
+    input {
+        border: none;
+        border-bottom: 1px grey solid;
+        line-height: 1px;
+        padding-bottom: 7px;
+        margin-bottom: 10px;
+        background-color: $secondColor;
+    }
+
+
+    #password {
+        margin-bottom: 10px;
+    }
+
+    p {
+        margin-top: 10px;
+        font-size: .6rem;
+        color: $thirdColor;
+    }
+
+    .signup,
+    .login {
+        background-color: $firstColor;
+        border-radius: 15px;
+        padding: 5px 10px;
+        display: block;
+        margin: 0 auto;
+
+        &:hover {
+            background-color: $firstColor;
+            font-size: 110%;
+            -webkit-transition: .2s ease-in-out;
+        }
+    }
+}
+
+.ng-invalid.ng-dirty {
+    border-color: #da0b0b;
+}
+
+
+form {
+    input.ng-invalid {
+        background-color: #ffe8b4;
+    }
+
+    input.ng-valid {
+        background-color: #a2fca2;
+    }
+}
+
+
+
+// input:invalid + span::after {
+//     content : "X";
+
+// }
+// input:valid + span::after {
+// content: "✓";
+// }
+
+// span {
+//     font-size: .8em;
+//     font-weight: bold;
+// }
+
+// .validation {
+//     display: flex;
+//     align-items: center;
+
+// }

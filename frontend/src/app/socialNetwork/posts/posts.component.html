@@ -1,0 +1,16 @@
+
+<div class="block">
+
+<app-newPost></app-newPost>
+
+  <p *ngIf="posts.length <= 0">
+    Aucun post à afficher!
+  </p>
+  <h2>Publications récentes</h2>
+  <div class="container" *ngIf="posts.length  > 0">
+    <app-singlePost *ngFor="let post of posts" [post]="post"></app-singlePost>
+
+  </div>
+</div>
+
+<!-- attribut binding avec [] : on va brancher les attributs de la balise ; event binding avec () : on branche avec les évènements de la balise ; two way data binding [()] : on bind avec une propriété qui n'est pas un attribut (variable de la classe TS)-->

@@ -1,0 +1,36 @@
+label {
+    margin: 10px;
+}
+
+.btn {
+    margin: 20px 0 ;
+    border: 1px solid grey;
+    background-color: rgb(209, 209, 209);
+    &:hover {
+      background-color: #31c723;  
+    }
+}
+
+.imgProfil {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 100%;
+    margin: 10px 0 0 20px;
+}
+
+.file-upload {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    left: 530px;
+    opacity: 0;
+}
+
+.block {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 300px;
+}

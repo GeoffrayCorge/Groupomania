@@ -1,0 +1,14 @@
+<div class="header">
+    <img src="../../assets/icon-left-font.png" />
+    <ul id="menu-accordeon" *ngIf="router.url == '/posts'">
+        <li><a>Profil</a>
+            <ul>
+                <li><a class="profil" cible="popup" (click)="openDialog()">Modifier profil</a></li>
+                <li><a class="logout" (click)="onLogout()">Se déconnecter</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+<!-- rajouter les information de profil (nom prénom mail image) + bouton de menu pour se déconnecter et voir son profil -->

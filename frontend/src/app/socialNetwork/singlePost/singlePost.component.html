@@ -1,0 +1,33 @@
+<div class="posts-list">
+    <div class="post-list-item">
+        <div class="post">
+            <div class=header-post>
+                <img class='imgProfil' src="{{user.picture}}" alt="photo profil">
+                <h2> {{user.firstName}} {{user.lastName}}</h2> <br/> 
+                <ul id="menu-accordeon" *ngIf="loggedUserRole === 'ADMIN' || loggedUserId === post.userId">
+                    <li><a>Options</a>
+                        <ul>
+                            <li><a class="modify" cible="popup" (click)="openDialog()" >Modifier le post</a></li>
+                            <li><a class="delete" (click)="delete()"> Supprimer le post</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+            <p class="timestamp"> le {{date}} à {{time}} </p>
+            
+            <p>{{ post.text }} </p>
+            <img class='imgPost' src='{{post.picture}}'>
+        </div>
+        <p class="like"> {{post.usersLiked.length}} <i class="fa-regular fa-thumbs-up thumb_black" *ngIf="post.usersLiked.length === 0 " > </i><i class="fa-regular fa-thumbs-up thumb_blue" *ngIf="post.usersLiked.length > 0" ></i> </p>
+    </div>
+    <div class="btns">
+        <button class="like" (click)="onlike()">J'aime 
+        </button>
+        <button class="commment" (click)="showComments()"> Commenter </button>
+    </div>
+    <div class="comment-block" *ngIf="result">
+        <app-new-comment></app-new-comment>
+        <app-comments *ngIf="post.comments.length > 0"></app-comments>
+    </div>
+</div>
