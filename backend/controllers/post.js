@@ -83,8 +83,8 @@ exports.deletePost = (req, res, next) => {
         .catch((error) => res.status(404).json({ error }));
 };
 
-exports.likes = (req, res, next) => {
-    Post.findOne({ _id: req.params.id })
+exports.likes = (req, res, next) => 
+    Post.findOne({ _id: req.params.id }) 
         .then((post) => {
             if (!post.usersLiked.includes(req.body.userId)) {
                 Post.updateOne({ _id: req.params.id }, { $push: { usersLiked: req.body.userId } })
