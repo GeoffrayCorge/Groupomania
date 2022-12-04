@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
 import { Post } from 'src/app/model/post.model';
-import { AuthService } from 'src/app/services/auth.service';
 import { PostsService } from 'src/app/services/posts.service';
+import { SinglePostComponent } from '../singlePost.component';
 
 
 
@@ -13,23 +12,56 @@ import { PostsService } from 'src/app/services/posts.service';
 })
 export class ModifyPostComponent implements OnInit {
   @Input() post: Post = new Post();
-  onePost: any= ''
+  file: any = undefined
 
   constructor(private postService: PostsService,
+              private postId: SinglePostComponent
+              
   ) { }
 
   ngOnInit() {
       
     this.postService.getPosts().subscribe((response) => {
-      this.post = response;
+      // this.post = response;
+      // console.log(this.post);
+      this.post= response
       console.log(this.post);
-      this.onePost= response[1]
-      console.log(this.onePost.text);
-  
-
      })
+     this.postService.getOnePost(this.post._id).subscribe((response) => {
+      console.log(this.post._id);
+      
+     })
+
      
   }
+
+  addFile(event: any){
+    this.file = event.target.files[0]
+    console.log(this.file);
+  }
+
+  send(credentials: any) {
+    const body = new FormData();
+    body.append('text', credentials.text)
+    body.append('file', this.file)
+
+    // for(const post of this.post) {
+    //   console.log(post._id); 
+    //   if (post.id === this.post._id) {
+    //     console.log(post._id); 
+
+    //   }
+
+    // }
+    
+       
+    // this.postService.updatePost(postId, body).subscribe(response => {
+    //   window.location.reload()
+    // })
+  }
+
+
+
 
 
 

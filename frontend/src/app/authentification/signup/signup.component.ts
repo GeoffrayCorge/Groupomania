@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit {
       
       sessionStorage.setItem("userId", userId);
       sessionStorage.setItem('role', userRole)
-      sessionStorage.setItem("token", token);       //sauvegarder le token dans le cookie avec une expiration de 24H
+      sessionStorage.setItem("token", token);     
 
       alert ('Vous êtes bien inscrit, vous pouvez vous connecter !')
       this.router.navigate(link);

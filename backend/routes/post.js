@@ -10,10 +10,11 @@ router.post('/', auth, multer, postCtrl.createPost);
 router.get('/:id', auth, postCtrl.getOnePost);
 router.put('/:id', auth, multer, postCtrl.modifyPost);
 router.delete('/:id', auth, postCtrl.deletePost);
-router.patch('/:id/like', auth, postCtrl.likes)
+router.post('/:id', auth, postCtrl.likes)
+router.patch('/:id', auth, postCtrl.disLikes)
 
-router.post('/:post/comment', postCtrl.addComment)
-router.put('/:post/comment/:id', postCtrl.updateComment)
-router.delete('/:post/comment/:id', postCtrl.deleteComment)
+router.post('/:id/comment', auth, postCtrl.addComment)
+router.put('/:id/comment/:id', postCtrl.updateComment)
+router.delete('/:id/comment/:id', postCtrl.deleteComment)
 
 module.exports = router; 

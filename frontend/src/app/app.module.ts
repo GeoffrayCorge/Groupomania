@@ -52,7 +52,7 @@ import { ModifyPostComponent } from './socialNetwork/singlePost/modify-post/modi
 
   providers: [
   {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-  AuthGuard,
+  AuthGuard
 ],
   bootstrap: [AppComponent]
 })

@@ -17,8 +17,8 @@ export class PostsService {
     return this.http.get(this.link)
   }
 
-  getOnePost(){
-    return this.http.get(this.link + this.postId)
+  getOnePost(postId: String){
+    return this.http.get(this.link + postId)
   }
 
   send(credentials: any) {
@@ -30,11 +30,19 @@ export class PostsService {
   }
 
   likePost(postId: any, credentials: any) {
-    return this.http.patch(this.link + postId +'/like', credentials)
+    return this.http.post(this.link + postId, credentials)
+  }
+
+  disLikePost(postId: any, credentials: any) {
+    return this.http.patch(this.link + postId, credentials)
   }
 
   addComment(postId: any, credentials: any) {
-    return this.http.put(this.link + postId, credentials)
+    return this.http.post(this.link + postId, credentials)
+  }
+
+  updatePost(postId: any, credentials: any) {
+    return this.http.put<{ userId: string, token: string }>(this.link + postId, credentials)
   }
 
 

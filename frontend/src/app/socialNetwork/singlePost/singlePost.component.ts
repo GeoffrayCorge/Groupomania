@@ -21,17 +21,17 @@ export class SinglePostComponent implements OnInit {
   date = ''
   time = ''
 
-  constructor( private auth : AuthService,
-              private postService : PostsService,
-              public dialog:MatDialog
+  constructor(private auth: AuthService,
+    private postService: PostsService,
+    public dialog: MatDialog
   ) { }
 
-  ngOnInit() {  
+  ngOnInit() {
     console.log(this.post);
-    
+
     this.loggedUserId = sessionStorage.getItem('userId');
     this.loggedUserRole = sessionStorage.getItem('role');
-    
+
     let timestamp = this.post.dateSave
     this.date = new Date(timestamp).toLocaleDateString('fr')
     this.time = new Date(timestamp).toLocaleTimeString('fr')
@@ -39,46 +39,61 @@ export class SinglePostComponent implements OnInit {
     this.auth.getUser(this.post.userId).subscribe((data) => {
       this.user = data;
       console.log(this.user);
-      
-      
-  })
-   }
-   
-  delete() {
-    this.postService.deletePost(this.post._id).subscribe(data => {
-      window.location.reload()   
+
+
     })
   }
-    
+
+  delete() {
+    this.postService.deletePost(this.post._id).subscribe(data => {
+      window.location.reload()
+    })
+  }
+
   showComments() {
     this.result++
   }
 
+
   openDialog() {
     this.dialog.open(ModifyPostComponent);
+
   }
 
   onlike() {
-    if(this.post.usersLiked.includes(this.loggedUserId)) {
-      const index= this.post.usersLiked.indexOf(this.loggedUserId)    
-      this.post.usersLiked.splice(index, 1)
-      return        
-    }
+    // if(this.post.usersLiked.includes(this.loggedUserId)) {
+    //   const index= this.post.usersLiked.indexOf(this.loggedUserId)    
+    //   this.post.usersLiked.splice(index, 1)
+    //   return        
+    // }
     this.post.usersLiked.push(this.loggedUserId)
     console.log(this.post._id);
     console.log(this.post.usersLiked);
-    
-    
 
-  this.postService.likePost(this.post._id, this.post.usersLiked).subscribe(data => {
-    console.log(data);
-    console.log(this.post.usersLiked);
-    
-  })
+    this.postService.likePost(this.post._id, this.post.usersLiked).subscribe(data => {
+      console.log(data);
+      console.log(this.post.usersLiked);
+
+    })
   }
-  
+
+  onDislike() {
+    const index = this.post.usersLiked.indexOf(this.loggedUserId)
+    this.post.usersLiked.splice(index, 1)
+    console.log(this.post._id);
+    console.log(this.post.usersLiked);
+
+    this.postService.disLikePost(this.post._id, this.post.usersLiked).subscribe(data => {
+      console.log(data);
+      console.log(this.post.usersLiked);
+
+    })
+  }
+
+
+
 }
-  
+
 
 
 

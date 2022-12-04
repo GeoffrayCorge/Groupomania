@@ -83,29 +83,67 @@ exports.deletePost = (req, res, next) => {
         .catch((error) => res.status(404).json({ error }));
 };
 
-exports.likes = (req, res, next) => 
+exports.likes = (req, res, next) => {
     Post.findOne({ _id: req.params.id }) 
         .then((post) => {
             if (!post.usersLiked.includes(req.body.userId)) {
-                Post.updateOne({ _id: req.params.id }, { $push: { usersLiked: req.body.userId } })
+                console.log('Like'),
+                Post.updateOne({ _id: req.params.id }, { 
+                    $push: { usersLiked: req.auth.userId } })
                     .then(() => res.status(200).json({ message: "J'aime" }))
                     .catch((error) => res.status(401).json({ error }));
             }
-            else {
-                Post.updateOne({ _id: req.params.id }, { $pull: { usersLiked: req.body.userId } })
+        })
+        .catch((error) => res.status(401).json({ error }));
+};
+exports.disLikes = (req, res, next) => {
+    Post.findOne({ _id: req.params.id }) 
+        .then((post) => {
+            if (!post.usersLiked.includes(req.body.userId)) {
+                console.log('dislike'),
+                Post.updateOne({ _id: req.params.id }, { 
+                    $pull: { usersLiked: req.auth.userId } })
                     .then(() => res.status(200).json({ message: "Je n'aime plus" }))
                     .catch((error) => res.status(401).json({ error }));
             }
         })
         .catch((error) => res.status(401).json({ error }));
-}
+};
 
 
 exports.addComment = (req, res, next) => {
+    // const comment = {
+	//     comment: req.body.newComment,
+	//     userProfilePicture: req.body.user.picture,
+	//     userName: req.body.user.firstName,
+	//     userLastName: req.body.user.lastName,
+	//     // creation: Date.now(),
+	//   };
+    //   Post.findOne({ _id: req.params.id })
+	//     .then(() => {
+    //         Post.updateOne(
+	//         { _id: req.params.id },
+	//         {
+	//           $push: { comments: comment },
+	//         }
+	//       )
+	//         .then(() => {
+	//           res.status(201).json({ message: "Comment saved successfully!" });
+	//         })
+	//         .catch((error) => {
+	//           res.status(400).json({ error });
+	//         });
+	//     })
+	//     .catch((error) => {
+	//       res.status(400).json({ error });
+	//     });
+	// };
+    
     console.log(req.body);
-    Post.findOne({ _id: req.params.post })
-        .then((post) => {
-            Post.updateOne({_id:req.params.post}, {$push: {comments: req.body} })
+        Post.findOne({ _id: req.params.id }) 
+            .then((post) => {
+            Post.updateOne({_id:req.params.post}, {
+                $push: {comments: req.body} })
             .then(() => res.status(200).json({ message: "Commentaire ajouté" }))
             .catch((error) => res.status(401).json({ error }));
 

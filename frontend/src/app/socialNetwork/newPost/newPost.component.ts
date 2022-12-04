@@ -30,8 +30,10 @@ export class NewPostComponent implements OnInit {
     const body = new FormData();
     body.append('text', credentials.text)
     body.append('file', this.file)
+    
     this.postService.send(body).subscribe(response => {
       window.location.reload()
+
     })
   }
 

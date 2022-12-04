@@ -22,7 +22,9 @@ export class NewCommentComponent implements OnInit {
 
   }
 
-  sendComment() {
+  sendComment() {    
+    this.post.comments.push()
+
     console.log(this.inputText);
     const getPost = this.onePost.post
     this.postService.addComment(getPost._id, this.inputText).subscribe(data => {
