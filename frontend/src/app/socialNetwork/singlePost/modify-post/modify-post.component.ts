@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Post } from 'src/app/model/post.model';
 import { PostsService } from 'src/app/services/posts.service';
-import { SinglePostComponent } from '../singlePost.component';
 
 
 
@@ -13,25 +12,17 @@ import { SinglePostComponent } from '../singlePost.component';
 export class ModifyPostComponent implements OnInit {
   @Input() post: Post = new Post();
   file: any = undefined
-
-  constructor(private postService: PostsService,
-              private postId: SinglePostComponent
-              
+  postId : any
+  constructor(private postService: PostsService              
   ) { }
 
   ngOnInit() {
       
     this.postService.getPosts().subscribe((response) => {
-      // this.post = response;
-      // console.log(this.post);
       this.post= response
       console.log(this.post);
      })
-     this.postService.getOnePost(this.post._id).subscribe((response) => {
-      console.log(this.post._id);
-      
-     })
-
+     this.postId = sessionStorage.getItem('aaa')
      
   }
 
@@ -44,7 +35,8 @@ export class ModifyPostComponent implements OnInit {
     const body = new FormData();
     body.append('text', credentials.text)
     body.append('file', this.file)
-
+    const id = JSON.parse(this.postId);
+    
     // for(const post of this.post) {
     //   console.log(post._id); 
     //   if (post.id === this.post._id) {
@@ -55,9 +47,9 @@ export class ModifyPostComponent implements OnInit {
     // }
     
        
-    // this.postService.updatePost(postId, body).subscribe(response => {
-    //   window.location.reload()
-    // })
+    this.postService.updatePost(id, body).subscribe(response => {
+      window.location.reload()
+    })
   }
 
 

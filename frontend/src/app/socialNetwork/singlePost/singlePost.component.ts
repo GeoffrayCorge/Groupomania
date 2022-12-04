@@ -56,6 +56,9 @@ export class SinglePostComponent implements OnInit {
 
 
   openDialog() {
+    console.log(this.post._id);
+    const postId = JSON.stringify(this.post._id)
+    JSON.stringify(sessionStorage.setItem('aaa', postId))
     this.dialog.open(ModifyPostComponent);
 
   }

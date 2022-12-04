@@ -17,10 +17,6 @@ export class PostsService {
     return this.http.get(this.link)
   }
 
-  getOnePost(postId: String){
-    return this.http.get(this.link + postId)
-  }
-
   send(credentials: any) {
     return this.http.post<{ userId: string, token: string }>(this.link , credentials)
   }
