@@ -20,3 +20,6 @@ FRONTEND
 L'identifiant de l'admin est :
     identifiant : admin
     password : admin
+L'adresse du site s'ouvre sur : http://localhost:4200/
+
+PASSWORD pour vous connectez à la base de données : EbChQYmAmVlxQN4N

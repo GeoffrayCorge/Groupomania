@@ -1,4 +1,3 @@
-
 export class Post {
     _id!: String;
     userId!: String;
@@ -7,14 +6,6 @@ export class Post {
     video!: String;
     likes!: Number;
     usersLiked!: String[];
-    comments!: [
-        {
-        commentId: String,
-        userId: String,
-        text: String,
-        timestamp: Date
-        }
-    ];
     dateSave!: Date;
   }
   

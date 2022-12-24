@@ -3,7 +3,6 @@ import { Post } from 'src/app/model/post.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { PostsService } from 'src/app/services/posts.service';
 
-
 @Component({
   selector: 'app-newPost',
   templateUrl: './newPost.component.html',
@@ -21,8 +20,7 @@ export class NewPostComponent implements OnInit {
   ngOnInit() {
     this.loggedUser = sessionStorage.getItem('userId');
     this.auth.getUser(this.loggedUser).subscribe((data) => {
-      this.loggedUser = data;
-      
+      this.loggedUser = data; 
   })
 }
 
@@ -30,19 +28,12 @@ export class NewPostComponent implements OnInit {
     const body = new FormData();
     body.append('text', credentials.text)
     body.append('file', this.file)
-    
     this.postService.send(body).subscribe(response => {
       window.location.reload()
-
     })
   }
 
   addFile(event: any){
     this.file = event.target.files[0]
-    console.log(this.file);
-    
   }
-
 }
-
-

@@ -2,9 +2,8 @@ const Post = require('../models/post');
 const fs = require('fs');
 const { log } = require('console');
 
-
 exports.getAllPosts = (req, res, next) => {
-    Post.find().sort({dateSave : -1})        //permets d'ordonner les publications
+    Post.find().sort({dateSave : -1}) 
         .then((posts) => res.status(200).json(posts))
         .catch((error) => res.status(404).json({ error }));
 };
@@ -109,75 +108,3 @@ exports.disLikes = (req, res, next) => {
         })
         .catch((error) => res.status(401).json({ error }));
 };
-
-
-exports.addComment = (req, res, next) => {
-    // const comment = {
-	//     comment: req.body.newComment,
-	//     userProfilePicture: req.body.user.picture,
-	//     userName: req.body.user.firstName,
-	//     userLastName: req.body.user.lastName,
-	//     // creation: Date.now(),
-	//   };
-    //   Post.findOne({ _id: req.params.id })
-	//     .then(() => {
-    //         Post.updateOne(
-	//         { _id: req.params.id },
-	//         {
-	//           $push: { comments: comment },
-	//         }
-	//       )
-	//         .then(() => {
-	//           res.status(201).json({ message: "Comment saved successfully!" });
-	//         })
-	//         .catch((error) => {
-	//           res.status(400).json({ error });
-	//         });
-	//     })
-	//     .catch((error) => {
-	//       res.status(400).json({ error });
-	//     });
-	// };
-    
-    console.log(req.body);
-        Post.findOne({ _id: req.params.id }) 
-            .then((post) => {
-            Post.updateOne({_id:req.params.post}, {
-                $push: {comments: req.body} })
-            .then(() => res.status(200).json({ message: "Commentaire ajouté" }))
-            .catch((error) => res.status(401).json({ error }));
-
-        })
-        .catch((error) => res.status(404).json({ error }));
-};
-
-exports.updateComment = (req, res, next) => {
-    Post.findOne({ _id: req.params.post })
-        .then((post) => {
-            const index= post.comments.findIndex((x) => x.commentId == req.params.id)
-            if (index > -1) {
-                post.comments[index]=req.body
-                Post.updateOne({_id:req.params.post}, {...JSON.parse(JSON.stringify(post))})
-                .then(() => res.status(200).json({ message: "Commentaire modifié" }))
-                .catch((error) => res.status(401).json({ error }));
-    
-            }
-        })
-        .catch((error) => res.status(404).json({ error }));
-};
-
-
-exports.deleteComment = (req, res, next) => {
-    Post.findOne({ _id: req.params.post })
-        .then((post) => {
-            const index= post.comments.findIndex((x) => x.commentId == req.params.id)
-            if (index > -1) {
-                post.comments.splice(index, 1)
-                Post.updateOne({_id:req.params.post}, {...JSON.parse(JSON.stringify(post))})
-                .then(() => res.status(200).json({ message: "Commentaire supprimé" }))
-                .catch((error) => res.status(401).json({ error }));
-            }
-        })
-        .catch((error) => res.status(404).json({ error }));
-};
-

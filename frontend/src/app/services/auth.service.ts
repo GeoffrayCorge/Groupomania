@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -10,11 +9,9 @@ export class AuthService {
   link = 'http://localhost:3000/api/user/';
   userId = sessionStorage.getItem('userId');
 
-
   constructor(private http: HttpClient,
     private router: Router
   ) { }
-
 
   login(credentials: any) {
     return this.http.post<{ userId: string, token: string, role: string }>(this.link + 'login', credentials)
@@ -36,8 +33,4 @@ export class AuthService {
   modifyUser(credentials: any) {
     return this.http.put(this.link + this.userId, credentials)
   }
-
-  
 }
-
-

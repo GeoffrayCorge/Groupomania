@@ -13,10 +13,8 @@
                         </ul>
                     </li>
                 </ul>
-
             </div>
             <p class="timestamp"> le {{date}} à {{time}} </p>
-            
             <p>{{ post.text }} </p>
             <img class='imgPost' src='{{post.picture}}'>
         </div>
@@ -27,10 +25,5 @@
         </button>
         <button class="like" (click)="onDislike()" *ngIf="post.usersLiked.includes(loggedUserId)">Je n'aime plus 
         </button>
-        <button class="commment" (click)="showComments()"> Commenter </button>
-    </div>
-    <div class="comment-block" *ngIf="result">
-        <app-new-comment></app-new-comment>
-        <app-comments *ngIf="post.comments.length > 0"></app-comments>
     </div>
 </div>

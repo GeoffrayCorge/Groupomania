@@ -5,8 +5,4 @@
         <div class="btns">
           <input #inputFile  type="file" class="file-upload"(change)="addFile($event)">
           <button class="addPost" [disabled]="postForm.invalid"  (click)="send(postForm.value)" >Envoyer !</button>
-      
-<!-- <input id="text" placeholder="{{ onePost.text }}"> {{ onePost.text }}
-<img class='imgPost' src=''>
-<button @click=""> Modifier </button> -->
 </div>

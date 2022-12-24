@@ -1,25 +1,3 @@
-<!-- <div class="block">
-    <h1> Bienvenue ! </h1>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHJJPrdiU0AhRxXYly-8UuL1mUef9j5xAABw&usqp=CAU"
-        alt="logo groupomania">
-    <form #signupForm="ngForm">
-        <div class="validation"><input #inputLastName="ngModel" required type="text" placeholder="Nom" ngModel
-                name="lastName" class="form-control" id="lastName"><span class="validity"></span></div>
-        <div class="validation"><input #inputName="ngModel" required type="text" placeholder="Prénom" ngModel
-                name="name" class="form-control" id="name"><span class="validity"></span></div>
-        <div class="validation"><input #inputMail="ngModel" email required type="text" placeholder="Email" ngModel
-                name="email"class="form-control" id="email"><span class="validity"></span></div>
-        <p class="text-danger" *ngIf="inputMail.invalid && inputMail.dirty"> Veuillez entrer un email valide !</p>
-        <div class="validation"><input #inputPassword="ngModel" required type="password" placeholder="Mot de passe"
-                ngModel name="password" minlength="8" ngModel name="password" class="form-control" id="password"> <span
-                class="validity"></span></div>
-
-        <button class="btn signup" [disabled]="signupForm.invalid"
-            (click)="signup(signupForm.value)">S'inscrire</button>
-    </form>
-    <p> Déjà inscrit ? <a (click)="goToLogin()">Se connecter</a></p>
-</div> -->
-
 <div class="block">
     <h1> Bienvenue ! </h1>
     <img src="../../../assets/images.png"  alt="logo groupomania">
@@ -36,8 +14,6 @@
         <input #inputPassword="ngModel" required type="password" placeholder="Mot de passe" ngModel name="password"
             minlength="8" ngModel name="password" class="form-control" id="password">
         <p class="text-danger" *ngIf="inputPassword.invalid && inputPassword.dirty"> Le password doit contenir au moins 8 caractères !</p>
-
-
         <button class="btn signup" [disabled]="signupForm.invalid"
             (click)="signup(signupForm.value)">S'inscrire</button>
     </form>

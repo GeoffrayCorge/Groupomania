@@ -1,9 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { User } from 'src/app/model/user.model';
 import { AuthService } from 'src/app/services/auth.service';
-import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
   selector: 'app-profil',
@@ -13,7 +10,6 @@ import { PostsService } from 'src/app/services/posts.service';
 export class ProfilComponent implements OnInit {
 
   link = 'http://localhost:3000/api/user/';
-
 
   constructor(private auth: AuthService) { }
 
@@ -25,7 +21,6 @@ export class ProfilComponent implements OnInit {
   inputFirstName: any
   inputPicture: any
   
-
   ngOnInit() {
     this.loggedUserId = sessionStorage.getItem('userId');
     console.log(this.loggedUserId);
@@ -33,13 +28,10 @@ export class ProfilComponent implements OnInit {
     this.auth.getUser(this.loggedUserId).subscribe((data) => {
       this.user = data;
       console.log(this.user);
-
   })
-  
   }
  
   modify(credentials: any) {
-
     if (this.inputFirstName == null && this.inputLastName == null) {
       console.log('rien à modifier');
       return
@@ -63,7 +55,5 @@ export class ProfilComponent implements OnInit {
   addFile(event: any){
     this.file = event.target.files[0]
     console.log(this.file); 
-    
   }
-
 }

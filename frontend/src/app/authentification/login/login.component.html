@@ -9,16 +9,7 @@
             name="password" class="form-control" id="password">
         <p class="text-danger" *ngIf="inputPassword.invalid && inputPassword.dirty"> Votre mot de passe n'est pas valide
         </p>
-
         <button class="btn login" [disabled]="loginForm.invalid" (click)="login(loginForm.value)">Login</button>
     </form>
     <p> Vous n'avez pas de compte ? <a [routerLink]="'/signup'" routerLinkActive="active">S'inscrire</a></p>
-    <!-- routerLink aura la même action qu'un href mais il dépend des reoutes prédéfinies-->
 </div>
-
-
-<!--routerLinkActive='' permettra de créer une classe du nom entre guillement quand le bouton ou le lien est activé-->
-
-<!-- Autre exemple de navigation entre les routes, cours 26 deuxième partie de vidéo-->
-
-<!-- [(ngModel)]="email"  //  [(ngModel)]="password" -->

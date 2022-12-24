@@ -20,16 +20,6 @@ const postSchema = mongoose.Schema({
         type: [String],
         required: true
     },
-    comments: {         // tout va être gérer par le frontend
-        type: [
-            {
-            commentId: String,
-            userId: String,
-            text: String,
-            timestamp: Date
-            }
-        ],
-    },
     dateSave : {
         type: Date,
         default: new Date().getTime()

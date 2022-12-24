@@ -6,7 +6,7 @@ const userSchema = mongoose.Schema({
     firstName: {
         type: String,
         required: true,
-        trim: true         //trim va supprimer les espaces si l'utilisateur en note à la fin de son nom 
+        trim: true  
     },        
     lastName: {
         type: String,
@@ -34,7 +34,6 @@ const userSchema = mongoose.Schema({
     }
 },
 );
-
 userSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('User', userSchema);

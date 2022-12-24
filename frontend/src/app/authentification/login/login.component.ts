@@ -2,16 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['../authentification.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-
 
   constructor(private router: Router,
     private auth: AuthService,
@@ -20,10 +16,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-
   login(credentials: any) {
-    console.log(credentials);
-
     this.auth.login(credentials).subscribe(response => {
       const link = ['posts'];
       const token = response.token;
@@ -37,8 +30,4 @@ export class LoginComponent implements OnInit {
       this.router.navigate(link);
     })
   }
-
-  
 }
-
-

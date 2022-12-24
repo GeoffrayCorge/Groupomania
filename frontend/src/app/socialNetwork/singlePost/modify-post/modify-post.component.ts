@@ -2,8 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Post } from 'src/app/model/post.model';
 import { PostsService } from 'src/app/services/posts.service';
 
-
-
 @Component({
   selector: 'app-modify-post',
   templateUrl: './modify-post.component.html',
@@ -23,7 +21,6 @@ export class ModifyPostComponent implements OnInit {
       console.log(this.post);
      })
      this.postId = sessionStorage.getItem('aaa')
-     
   }
 
   addFile(event: any){
@@ -36,25 +33,9 @@ export class ModifyPostComponent implements OnInit {
     body.append('text', credentials.text)
     body.append('file', this.file)
     const id = JSON.parse(this.postId);
-    
-    // for(const post of this.post) {
-    //   console.log(post._id); 
-    //   if (post.id === this.post._id) {
-    //     console.log(post._id); 
 
-    //   }
-
-    // }
-    
-       
     this.postService.updatePost(id, body).subscribe(response => {
       window.location.reload()
     })
   }
-
-
-
-
-
-
 }

@@ -3,10 +3,9 @@
   <form #postForm="ngForm">
   <input #inputText="ngModel" required type="text" placeholder="Exprimez vous !" ngModel name="text"
     class="form-control" id="text">
-  <div class="btns">
-    <input #inputFile  type="file" class="file-upload" (change)="addFile($event)">
-    <button class="addPost" [disabled]="postForm.invalid" (click)="send(postForm.value)">Envoyer !</button>
-  </div>
-</form>
-
+    <div class="btns">
+      <input #inputFile  type="file" class="file-upload" (change)="addFile($event)">
+      <button class="addPost" [disabled]="postForm.invalid" (click)="send(postForm.value)">Envoyer !</button>
+    </div>
+  </form>
 </div>

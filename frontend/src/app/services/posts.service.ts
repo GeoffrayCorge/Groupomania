@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +10,6 @@ export class PostsService {
   postId : String
   constructor(private http: HttpClient,
     ) { }
-
 
   getPosts(): Observable<any> {
     return this.http.get(this.link)
@@ -33,13 +31,7 @@ export class PostsService {
     return this.http.patch(this.link + postId, credentials)
   }
 
-  addComment(postId: any, credentials: any) {
-    return this.http.post(this.link + postId, credentials)
-  }
-
   updatePost(postId: any, credentials: any) {
     return this.http.put<{ userId: string, token: string }>(this.link + postId, credentials)
   }
-
-
 }
