@@ -11,6 +11,7 @@ BACKEND
     - Ouvrez le terminal à la racine du dossier, et tapez : cd backend
     - Ensuite : npm install Cela installera tout le nécessaire au bon fonctionnement du site web.
     - Afin de démarrer le backend, tapez : nodemon
+Le serveur se lance sur : http://localhost:3000/
 
 FRONTEND
     - Ouvrez le terminal à la racine du dossier, et tapez : cd frontend
@@ -22,4 +23,5 @@ L'identifiant de l'admin est :
     password : admin
 L'adresse du site s'ouvre sur : http://localhost:4200/
 
-PASSWORD pour vous connectez à la base de données : EbChQYmAmVlxQN4N
+Créer un fichier .env à la racine du dossier avec ce qui suit en contenu :
+    ADRESSE_MONGO_DB="mongodb+srv://Geoffray:EbChQYmAmVlxQN4N@cluster0.sa5oa8o.mongodb.net/?retryWrites=true&w=majority"

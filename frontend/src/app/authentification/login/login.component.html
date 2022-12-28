@@ -2,11 +2,9 @@
     <h1> Bienvenue ! </h1>
     <img src="../../../assets/images.png"  alt="logo groupomania">
     <form #loginForm="ngForm">
-        <input #inputMail="ngModel" email required type="text" placeholder="Email" ngModel name="email"
-            class="form-control" id="email">
+        <input #inputMail="ngModel" email required type="text" placeholder="Email" ngModel name="email" class="form-control" id="email">
         <p class="text-danger" *ngIf="inputMail.invalid && inputMail.dirty"> Votre email n'est pas valide</p>
-        <input #inputPassword="ngModel" required type="password" placeholder="Mot de passe" ngModel
-            name="password" class="form-control" id="password">
+        <input #inputPassword="ngModel" password required type="password" placeholder="Mot de passe" ngModel name="password" class="form-control" id="password">
         <p class="text-danger" *ngIf="inputPassword.invalid && inputPassword.dirty"> Votre mot de passe n'est pas valide
         </p>
         <button class="btn login" [disabled]="loginForm.invalid" (click)="login(loginForm.value)">Login</button>
