@@ -9,13 +9,13 @@ require("dotenv").config();
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
 
-mongoose.connect("mongodb+srv://Geoffray:EbChQYmAmVlxQN4N@cluster0.sa5oa8o.mongodb.net/?retryWrites=true&w=majority",
+mongoose.connect(process.env.ADRESSE_MONGO_DB,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log(process.env.ADRESSE_MONGO_DB) )
-  .catch(() => console.log(process.env.ADRESSE_MONGO_DB));
+  .then(() => console.log("La connexion à mongoDB a réussi") )
+  .catch(() => console.log("La connexion à mongoDB a échoué"));
 
 const app = express();
 
