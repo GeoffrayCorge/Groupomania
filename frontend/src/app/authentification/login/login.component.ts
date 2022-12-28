@@ -28,6 +28,10 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem("token", token);    
       
       this.router.navigate(link);
-    })
+    },
+    error => {
+      alert('Identifiants incorrects');
+    }
+    )
   }
 }
