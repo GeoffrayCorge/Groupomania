@@ -19,8 +19,8 @@ FRONTEND
     - Enfin : ng serve Cela vous permettra de faire afficher le frontend.
 
 L'identifiant de l'admin est :
-    identifiant : admin
-    password : admin
+    identifiant : admin@gmail.com
+    password : FFURexC6Uau47S7
 L'adresse du site s'ouvre sur : http://localhost:4200/
 
 Créer un fichier .env à la racine du dossier avec ce qui suit en contenu :
